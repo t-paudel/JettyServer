@@ -22,8 +22,6 @@ public class Connector {
 	public void createConnector(List<AssetDetails> assets) {
 		System.out.println("Connector::createConnector()");
 		
-		List<AssetDetails> assetDetails = assetService.getAllAssets();
-		
 		int port;
 		ServerConnector connector;
 		HandlerData handlerData;
@@ -57,7 +55,6 @@ public class Connector {
 		try {
 			server.start();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -69,7 +66,7 @@ public class Connector {
 		
 		context.setContextPath(data.getUrl());
 		context.setHandler(new Handler(data.getAssetName(), data.getPort(), data.getUrl()));
-		context.setVirtualHosts(new String[] {data.getConnectorName()});
+		context.setVirtualHosts(new String[] {"@" + data.getConnectorName()});
 		
 		return context;
 		

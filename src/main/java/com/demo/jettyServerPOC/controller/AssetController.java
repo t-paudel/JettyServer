@@ -23,11 +23,15 @@ public class AssetController {
 	
 	@GetMapping("/getAllMappings")
 	public List<PortMapping> getAllMapping() {
+		System.out.println("AssetController::getAllMapping()");
+		
 		return assetService.getAllMapping();
 	}
 	
 	@GetMapping("/getAllAssets")
 	public List<AssetDetails> getAllService(){
+		System.out.println("AssetController::getAllService()");
+		
 		return assetService.getAllAssets();
 	}
 	
@@ -41,6 +45,15 @@ public class AssetController {
 	
 	@GetMapping("/isAvailable/{assetId}")
 	public PortMapping isAvailable(@PathVariable("assetId") long assetId) {
+		System.out.println("AssetController::isAvailable()");
+		
 		return repo.findByAssetId(assetId);
+	}
+	
+	@GetMapping("/createAssets/{number}")
+	public String createAssets(@PathVariable("number") int number) {
+		System.out.println("AssetController::createAssets()");
+		
+		return assetService.createAsset(number);
 	}
 }

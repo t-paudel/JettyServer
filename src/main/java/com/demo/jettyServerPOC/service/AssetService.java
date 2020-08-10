@@ -44,4 +44,8 @@ public class AssetService {
 	public int getPortNumber(long assetId) {
 		 return mappingRepo.findByAssetId(assetId).getPort();
 	}
+	
+	public String createAsset(int number) {
+		return "1";
+	}
 }

@@ -31,8 +31,8 @@ public class Handler extends AbstractHandler{
 
         PrintWriter out = response.getWriter();
 
-        out.println("<h1> I am" + assetName  + "running on " + portNumber + "</h1>");
-        out.println("<br><br>The route called is " + url);
+        out.println("<h3>" + assetName  + " : " + portNumber + "</h3>");
+        out.println("<br>route : " + url);
         	
         baseRequest.setHandled(true);
     }
