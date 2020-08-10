@@ -15,11 +15,11 @@ public class AssetDetails {
 	private String assetName;
 	private String inboundUri;
 	
-	public long getAsssetId() {
+	public long getAssetId() {
 		return assetId;
 	}
-	public void setAsssetId(long asssetId) {
-		this.assetId = asssetId;
+	public void setAssetId(long assetId) {
+		this.assetId = assetId;
 	}
 	public String getAssetName() {
 		return assetName;
@@ -32,5 +32,12 @@ public class AssetDetails {
 	}
 	public void setInboundUri(String inboundUri) {
 		this.inboundUri = inboundUri;
-	}	
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "AssetDetails [_id=" + _id + ", assetId=" + assetId + ", assetName=" + assetName + ", inboundUri="
+				+ inboundUri + "]";
+	}
 }

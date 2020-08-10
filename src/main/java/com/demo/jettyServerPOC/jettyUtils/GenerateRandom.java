@@ -5,7 +5,9 @@ import java.net.Socket;
 
 public class GenerateRandom {
 
-	public int randomPort() {
+	public int generatePortNumber() {
+		System.out.println("GenerateRandom::generatePortNumber()");
+		
 		int port = (int)(Math.random()*10000);
 		boolean isAvailable;
 		try (Socket ignored = new Socket("localhost", port)) {
@@ -18,18 +20,20 @@ public class GenerateRandom {
 		if(isAvailable)
 			return port;
 		
-		randomPort();
+		generatePortNumber();
 		
 		return 0;
 	}
 	
-	public String generateService() {
+	public String generateAssetName() {
+		System.out.println("GenerateRandom::generateUri()");
+		
 		final String master = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789";
 		StringBuilder sb = new StringBuilder();
 		int index=0;
 		
 		for(int i=0;i<10;i++) {
-			index = (int) Math.random()*master.length();
+			index = (int) (Math.random()*master.length());
 			sb.append(master.charAt(index));
 		}
 		
@@ -37,12 +41,15 @@ public class GenerateRandom {
 	}
 	
 	public String generateUri() {
+		System.out.println("GenerateRandom::generateUri()");
+		
 		final String master = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		StringBuilder sb = new StringBuilder();
+		sb.append("/");
 		int index=0;
 		
-		for(int i=0;i<2;i++) {
-			index = (int) Math.random()*master.length();
+		for(int i=0;i<=4;i++) {
+			index = (int) (Math.random()*master.length());
 			sb.append(master.charAt(index));
 		}
 		
@@ -50,6 +57,8 @@ public class GenerateRandom {
 	}
 	
 	public long generateAssetId() {
-		return (long)Math.random()*1000000000;
+		System.out.println("GenerateRandom::generateAssetId()");
+		long id = (long) (Math.random()*1000000000);
+		return id;
 	}
 }

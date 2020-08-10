@@ -31,7 +31,7 @@ public class Connector {
 		Server server = new Server();
 		
 		for(AssetDetails asset:assets) {
-			port = assetService.getPortNumber(asset.getAsssetId());
+			port = assetService.getPortNumber(asset.getAssetId());
 			connector = new ServerConnector(server);
 			handlerData= new HandlerData();
 			context = new ContextHandler();
@@ -39,9 +39,10 @@ public class Connector {
 			handlerData.setAssetName(asset.getAssetName());
 			handlerData.setPort(port);
 			handlerData.setUrl(asset.getInboundUri());
-			handlerData.setConnectorName(asset.getAssetName());
+			handlerData.setConnectorName("@" + asset.getAssetName());
 			
 			System.out.println(handlerData.toString());
+			
 			connector.setPort(port);
 			connector.setHost("localhost");
 			connector.setName(asset.getAssetName());
@@ -66,7 +67,7 @@ public class Connector {
 		
 		context.setContextPath(data.getUrl());
 		context.setHandler(new Handler(data.getAssetName(), data.getPort(), data.getUrl()));
-		context.setVirtualHosts(new String[] {"@" + data.getConnectorName()});
+		context.setVirtualHosts(new String[] {data.getConnectorName()});
 		
 		return context;
 		

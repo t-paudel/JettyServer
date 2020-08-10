@@ -8,23 +8,36 @@ import org.springframework.stereotype.Component;
 @Document(collection="PortMapping")
 public class PortMapping {
 
+
 	@Id
 	private String _id;
 	
-	private int assetId;
-	private int port;
+	private long assetId;
+	private int portNumber;
+	private boolean isAllotted;
 	
 	
-	public int getAssetId() {
+	public boolean isAllotted() {
+		return isAllotted;
+	}
+	public void setAllotted(boolean isAllotted) {
+		this.isAllotted = isAllotted;
+	}
+	public long getAssetId() {
 		return assetId;
 	}
-	public void setAssetId(int assetId) {
+	public void setAssetId(long assetId) {
 		this.assetId = assetId;
 	}
-	public int getPort() {
-		return port;
+	public int getPortNumber() {
+		return portNumber;
 	}
-	public void setPort(int port) {
-		this.port = port;
+	public void setPortNumber(int portNumber) {
+		this.portNumber = portNumber;
 	}	
+	
+	@Override
+	public String toString() {
+		return "PortMapping [_id=" + _id + ", assetId=" + assetId + ", portNumber=" + portNumber + "]";
+	}
 }

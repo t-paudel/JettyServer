@@ -44,10 +44,10 @@ public class AssetController {
 	}
 	
 	@GetMapping("/isAvailable/{assetId}")
-	public PortMapping isAvailable(@PathVariable("assetId") long assetId) {
+	public boolean isAvailable(@PathVariable("assetId") long assetId) {
 		System.out.println("AssetController::isAvailable()");
 		
-		return repo.findByAssetId(assetId);
+		return repo.findByAssetId(assetId).isEmpty();
 	}
 	
 	@GetMapping("/createAssets/{number}")
