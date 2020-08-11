@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.jettyServerPOC.model.AssetDetails;
@@ -35,7 +36,7 @@ public class AssetController {
 		return assetService.getAllAssets();
 	}
 	
-	@GetMapping("/loadAssets")
+	@PostMapping("/loadAssets")
 	public String loadAssets() {
 		System.out.println("AssetController::loadAssets()");
 		
@@ -50,7 +51,7 @@ public class AssetController {
 		return repo.findByAssetId(assetId).isEmpty();
 	}
 	
-	@GetMapping("/createAssets/{number}")
+	@PostMapping("/createAssets/{number}")
 	public String createAssets(@PathVariable("number") int number) {
 		System.out.println("AssetController::createAssets()");
 		
